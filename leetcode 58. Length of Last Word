@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        // int n=s.length();
+        // int i=n-1;
+        // while(i>=0 && s[i] == ' ')
+        //     i--;
+              
+        // int leng=0;
+        // while(i>=0 && s[i]!=' '){
+        //     leng++;
+        //     i--;
+        // } 
+        // return leng;
+
+//<--------------------------------approach 2----------------------------------->
+        int idx=s.find_last_not_of(' ')+1;
+        s.erase(idx);
+        int find_spaceidx=s.find_last_of(' ');
+        return find_spaceidx==string::npos?s.length():s.length()-find_spaceidx-1;
+    }
+};
