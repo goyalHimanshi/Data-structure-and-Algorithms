@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maximumCount(vector<int>& nums) {
+    //     auto lambdap=[](int num){
+    //         return num>0;
+    //     };
+    //      auto lambdan=[](int num){
+    //         return num<0;
+    //     };
+    // int positive=count_if(nums.begin(),nums.end(),lambdap); 
+    // int  negative=  count_if(nums.begin(),nums.end(),lambdan);
+    //  return max(positive,negative);
+//<------------------------------------------------------------approach2------------------------------>
+   int firstpos= lower_bound(nums.begin(),nums.end(),1)-begin(nums);
+   int firstzero=lower_bound(nums.begin(),nums.end(),0)-begin(nums);
+   int n=nums.size();
+   return max(n-firstpos,firstzero);
+    }
+
+};
