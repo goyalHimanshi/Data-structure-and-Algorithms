@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string firstPalindrome(vector<string>& words) {
+       //approach 1 where you firstly reverse the array of the given string and them match it to the string
+        // for(string&temp:words){
+        //    if(temp== string(temp.rbegin(),temp.rend())){
+        // return temp;
+
+        //    }
+
+        // }
+        // return "";
+
+    //approach 2 where by using STL lib of c++ equal you check from begin and reversebegin that is from the end
+        for(string&word:words){
+             int n=word.size();
+        if(equal(word.begin(),word.begin()+n/2,word.rbegin())){
+            return word;
+        }
+        }
+        return "";
+    }
+};
