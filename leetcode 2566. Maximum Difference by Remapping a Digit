@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minMaxDifference(int num) {
+        string str=to_string(num);
+        string str1=str;
+        //maximun number
+        int idx=str.find_first_not_of('9');
+        if(idx!=string::npos){
+            char ch=str[idx];
+            replace(str.begin(),str.end(),ch,'9');
+        }
+        //mininum number remap
+        char ch=str1[0];
+        replace(str1.begin(),str1.end(),ch,'0');
+
+        //maximum difference
+        return stoi(str)-stoi(str1);
+
+    }
+};
