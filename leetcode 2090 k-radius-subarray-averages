@@ -1,0 +1,47 @@
+class Solution {
+public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+        //base case
+      if(k==0){
+        return nums;
+      }  
+      int n=nums.size();
+      //point the i value to find the sum and the average  of the given length window
+      int i=k;
+      int left=0;
+      int right=2*k;
+      //take the arr to store the respective values
+      vector<int>result(n,-1);
+      if(n<2*k+1){
+        return result;
+      }
+      //firstly find the sum of the left to right window 1the move further 
+      
+      long long windowsum=0;
+      for(int i=left;i<=right;i++){
+        windowsum+=nums[i];
+       
+
+      }
+      int length=2*k+1;
+      //here find the average and then store it into the result
+      result[i]=windowsum/length;
+      i++;
+      right++;
+      while(right<n){
+        //add the new element right and remove the previous one from the window to get newsumwindow
+        int out_of_window=nums[left];
+        int come_in_window=nums[right];
+       windowsum=windowsum-out_of_window+come_in_window;
+       result[i]=windowsum/length;
+       i++;
+       left++;
+       right++;
+
+      }
+      //print the result
+      return result;
+
+
+    }
+};
