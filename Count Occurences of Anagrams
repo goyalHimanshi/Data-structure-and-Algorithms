@@ -1,0 +1,44 @@
+// User function template for C++
+class Solution {
+  public:
+   bool allzero(vector<int>&counter){
+            for(int &i:counter){
+                if(i!=0)
+                    return false;
+                
+            }
+            return true;
+            
+        }
+    int search(string &pat, string &txt) {
+        // code here
+        
+       
+        int n=txt.length();
+        vector<int>counter(26,0);
+        //in window find the freq of the element
+        for(int i=0;i<pat.length();i++){
+            char ch=pat[i];
+            counter[ch-'a']++;
+            
+        }
+        int i=0;
+        int j=0;
+        int k=pat.length();
+        int result=0;
+        while(j<n){
+            counter[txt[j]-'a']--;
+            if(j-i+1==k){
+                if(allzero(counter)){
+                    result++;
+                }
+                counter[txt[j]-'a']++;
+                i++;
+            }
+            j++;
+        }
+        return result;
+        
+        
+    }
+};
