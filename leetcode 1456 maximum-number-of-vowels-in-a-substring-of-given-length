@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int maxVowels(string s, int k) {
+       //firstly start to itrate the string s
+       int i=0;
+       int j=0;int maxvowel=0;
+       int n=s.length();int count=0;
+       auto isvowel=[&](char ch){
+        return ch=='a'||ch=='i'||ch=='o'||ch=='u'||ch=='e';
+
+       };
+       while(j<n){
+        //check if the s[j]is vowel or not 
+        if(isvowel(s[j]))
+            count++;
+        
+        //check the window size is equal to k
+        if(j-i+1==k){
+maxvowel=max(maxvowel,count);
+        
+        //now you have to check further more 
+        //so need to shrink the window 
+
+        if(isvowel(s[i]))
+            count--;
+
+        
+        i++;
+       } 
+       j++;
+       }
+       return maxvowel;
+    }
+};
