@@ -1,0 +1,57 @@
+class Solution {
+public:
+
+//  int findmaxones(vector<int>& nums,int skip_i){
+//     int countlen=0;
+//     int maxlen=0;
+
+//     //now you have to find the maxlen by skip the one zero 
+//     for(int i=0;i<n;i++){
+//         if(i==skip_i) continue;
+//         if(nums[i]==1){
+//             countlen++;
+//             maxlen=max(maxlen,countlen);
+//         }else{
+//             countlen=0;
+//         }
+      
+
+//     }
+//     return maxlen;
+//  }
+    int longestSubarray(vector<int>& nums) {
+//  int countzero=0;int result=0;
+//  n=nums.size();
+//         for(int i=0;i<n;i++){
+           
+//             if(nums[i]==0){
+//                  countzero++;
+//             //we have to delete the one element to find longest 1
+//             result=max(result,findmaxones(nums,i));
+//             }
+//         }
+//         if(countzero==0) return n-1;
+        
+//         return result;
+        
+//     }
+//<.......................approch 2.....................................slinding window>
+int n=nums.size();
+int i=0;
+int countzero=0;
+int result=0;
+
+for(int j=0;j<n;j++){
+if(nums[j]==0)
+    countzero++;
+    while(countzero>1){
+        if(nums[i]==0)
+            countzero--;
+        i++;
+        
+    }
+result=max(result,j-i);
+}
+return result;
+    }
+};
