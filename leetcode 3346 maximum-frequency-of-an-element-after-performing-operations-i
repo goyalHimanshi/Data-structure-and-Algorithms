@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int maxFrequency(vector<int>& nums, int k, int numOperations) {
+//firstly find the max element int the range of nums array // 5,11,20,20
+        int maxval=*max_element(begin(nums),end(nums))+k;
+//create the map that contains the freq of nums array
+        unordered_map<int,int>freq;
+//create the diff array to store the range of the freq
+        vector<int>diff(maxval+2,0);
+        for(int i=0;i<nums.size();i++){
+            freq[nums[i]]++;
+            int l=max(nums[i]-k,0);
+            int r=min(nums[i]+k,maxval);
+            diff[l]++;
+            diff[r+1]--;
+
+
+
+        }
+        //find the cummulative sum
+       int result=1;
+       for(int target=0;target<=maxval;target++){
+        diff[target]+=(target>0?diff[target-1]:0);
+        int targetfreq=freq[target]; //example 15 ->1  targetfreq=freq[15]=0
+        int needcoversion=diff[target]-targetfreq; // diff[15]=3,  3-0=3;
+        int maxpossiblefreq=min(needcoversion,numOperations);  //1 min(3,1);
+        result=max(result,targetfreq+maxpossiblefreq);  //1
+       
+       }
+        return result;
+    }
+};
