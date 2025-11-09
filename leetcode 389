@@ -1,0 +1,29 @@
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        // as we know that the xor of the same element give zero.so,the element that are unique we can find easly.
+        int XOR= 0;
+        for(char &ch:s){
+            XOR^=ch;
+        }
+
+        for(char &ch:t){
+            XOR^=ch;
+        }
+        return (char)XOR;
+
+        //<-----------------approach 2------------>
+        // unordered_map<char ,int>mp;
+        // for(auto &ch:s){
+        //     mp[ch]++;
+        // }
+        // for(auto &ch:t){
+        //   if(mp.find(ch)==mp.end()){
+        //     return ch;
+        
+        //   }
+        //     }
+        //     return 'x';
+        }
+    
+};
