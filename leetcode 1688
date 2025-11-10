@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int numberOfMatches(int n) {
+//as you have given that for n is even then there is n/2 matches are played and n/2 for next round until one is winner 
+int matches=0;
+while(n>1){
+    if(n%2==0){ //even 
+    matches+=n/2;
+    n=n/2;
+
+    }else{
+        matches+=(n-1)/2;
+        n=(n-1)/2+1;
+    }
+}
+return matches;
+        
+    }
+    //<---------------approach2--------------->
+    // return n-1;
+    //as we know that for n teams there is only one winner so matches is played by n-1 teams 
+    
+
+};
