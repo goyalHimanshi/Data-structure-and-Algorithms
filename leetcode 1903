@@ -1,0 +1,13 @@
+class Solution {
+public:
+    string largestOddNumber(string num) {
+        int n=num.length();
+        for(int i=n-1;i>=0;i--){
+            if((num[i]-'0')%2!=0){ //this convert the num[i]which is  character to integer to check if the number is odd or not
+                return num.substr(0,i+1);
+            }
+        }
+        return   "";
+        
+    }
+};
