@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool isPathCrossing(string path) {
+        //firstly initialize the path of x and y 
+        int x=0;
+        int y=0;
+        //now create the map to find if you visited the path or not 
+        unordered_set<string>st;
+        string key=to_string(x)+"_"+to_string(y);
+        st.insert(key);
+        //start the itration from path 
+        for(int i=0;i<path.length();i++){
+            if(path[i]=='N'){
+                y++;
+            }
+            else if(path[i]=='S'){
+                y--;
+            }
+            else if(path[i]=='E'){
+                x++;
+            }else{
+                x--;
+            }
+            key=to_string(x)+"_"+to_string(y);
+            if(st.find(key)!=st.end()){
+                return true;
+            }
+            st.insert(key);
+
+           
+        }
+        return false;
+        
+    }
+};
