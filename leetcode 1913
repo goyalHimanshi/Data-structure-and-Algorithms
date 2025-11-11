@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int maxProductDifference(vector<int>& nums) {
+        int largest=INT_MIN;
+        int seclargest=INT_MIN;
+        int smallest=INT_MAX;
+        int secsmallest=INT_MAX;
+        //firstly find the maximum element first and sec largest number from the array 
+        for(int &num:nums){
+            if(num>largest){
+                seclargest=largest;
+                largest=num;
+            }else{
+            seclargest=max(seclargest,num);
+            }
+              if(num<smallest){
+                secsmallest=smallest;
+                smallest=num;
+            }else{
+            secsmallest=min(secsmallest,num);
+            }
+        }
+        //now find the second smallest and smallest element from the array 
+         
+        return (largest*seclargest)-(smallest*secsmallest);
+    }
+};
