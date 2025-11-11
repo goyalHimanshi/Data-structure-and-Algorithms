@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        vector<int>vec(26,0);
+        for(auto &ch:s){
+            vec[ch-'a']++;
+        }
+        for(auto &ch:t){
+            vec[ch-'a']--;
+        }
+        bool allzeroes=all_of(begin(vec),end(vec),[](int element){
+            return element==0;
+
+        });
+        return allzeroes;
+        
+    }
+};
