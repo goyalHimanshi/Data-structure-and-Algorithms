@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool makeEqual(vector<string>& words) {
+        //firstly you have to store the frequency of each character in the string 
+        unordered_map<char,int>mp;
+        int n=words.size();
+        for(string &word:words){
+            for(char &ch:word){
+                mp[ch]++;
+
+            }
+        }
+        //now check if the frequency in map is equal to the size of string
+        for(auto &it:mp){
+            int freq=it.second;
+            if( freq % n!=0){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+};
