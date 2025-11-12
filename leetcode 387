@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        //as we have given that the string is of small letters so,store all the things in the array
+        int arr[26]={0};
+        for(int i=0;i<s.length();i++){
+            char ch=s[i];
+            arr[ch-'a']++; //store the frequency of each character 
+        }
+        for(int i=0;i<s.length();i++){
+            char ch=s[i];
+            //check if the charactr in the string have one freq means unique or not 
+            if(arr[ch-'a']==1){
+                return i;
+            }
+        }
+        return -1;
+
+        
+    }
+};
