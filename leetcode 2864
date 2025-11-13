@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string maximumOddBinaryNumber(string s) {
+        int n=s.length();
+        int i=0;
+        string result=string(n,'0');
+        int count_1=count(s.begin(),s.end(),'1');//to count the ones in the string given 
+        //now you have to firstly assign the one to the lsb at the end to make the string odd 
+        
+        while(count_1>1){
+            //now if the value of the count one is greater than 1 then assing from the strating of the result i.e. most significant bit 
+            result[i]='1';
+            i++;
+            count_1--;
+
+
+
+        }
+        result[n-1]='1'; //here lsb at the end we assing one 
+        return result;
+
+        
+    }
+};
