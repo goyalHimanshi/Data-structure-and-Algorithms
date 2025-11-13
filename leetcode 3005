@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maxFrequencyElements(vector<int>& nums) {
+     int n=nums.size();
+     //you have to calculate the freq of the value 
+     vector<int>count(101);
+     //store the value 
+     int maxfreq=0;
+     for(auto &num:nums){
+        count[num]++;
+        maxfreq=max(maxfreq,count[num]);
+
+
+     }
+     int result=0;
+     //now return the max freq by itrate the count vector
+     for(int i=0;i<101;i++){
+        if(count[i]==maxfreq){
+            result+=maxfreq;
+
+        }
+     }
+     return result;
+        
+    }
+};
