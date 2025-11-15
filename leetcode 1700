@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        //students are given in the queue 
+        //sandwiches is given in the stack 
+        int n=students.size();
+        int arr[2]={0};
+        //arr[0] contains the students that like 0 sandwiches 
+        //arr[1] contains the students that like 1 sandwiches 
+        for(auto &num:students){
+            arr[num]++;
+        }
+        //now you have to check that if the sandwiches is equal to that like no of students or not 
+        for(int i=0;i<n;i++){
+            int sndwch=sandwiches[i];
+            //here either its 0 or 1
+            if(arr[sndwch]==0){ //it means that you dont left any students that want any of the sandwich its empty now but in the sandwich queue there is some sandwich left
+                return n-i;
+            }
+            arr[sndwch]--;
+        }
+        return 0;
+        
+    }
+};
