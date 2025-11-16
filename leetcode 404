@@ -1,0 +1,42 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+// int solve(TreeNode*curr,TreeNode*parent){
+//     //if there is no parent and curr is null so means there is no tree 
+//     if(curr==NULL){
+//         return 0;
+//     }
+//     //leaf node  
+//     if(curr->left==NULL && curr->right==NULL){
+//         if(parent!=NULL && parent->left==curr){
+//             return curr->val;
+//         }
+//     }
+//     int left=solve(curr->left,curr);
+//     int right=solve(curr->right,curr); //nothig just now curr->left is curr itself and find its left children 
+//     return left+right;
+// }
+int solve(TreeNode* curr,bool isleft){
+    if(curr==NULL) return 0;
+    if(curr->left==NULL && curr->right==NULL && isleft==true){ //leaf node 
+    return curr->val;
+    }
+    return solve(curr->left,true)+solve(curr->right,false); //futher pass the node 
+
+}
+    int sumOfLeftLeaves(TreeNode* root) {
+        // return solve(root,NULL);
+        return solve(root,false);
+        
+    }
+};
