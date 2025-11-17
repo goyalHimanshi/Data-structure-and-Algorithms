@@ -1,0 +1,90 @@
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& score) {
+        //<----------approch3---------------------by using maxscore>
+
+int maxele=*max_element(begin(score),end(score)); //here  we got 10  thats max elemenet as by example 2
+vector<int>mp(maxele+1,-1);  //create array from 0 to 10 size =11 ,-1 initilainzed 
+int n=score.size();
+ for(int i=0;i<n;i++){
+    mp[score[i]]=i; //here in an array we store the 10,0 like that
+
+ } 
+  //after this we have to push the element from this array to resulttant array 
+  vector<string>result(n);
+  int rank=1;
+  for(int i=maxele;i>=0;i--){  //it point the max element 
+    //if 
+    if(mp[i]!=-1){
+    if(rank==1){
+        result[mp[i]]="Gold Medal";
+    } else if(rank==2){
+                  result[mp[i]]  ="Silver Medal";
+        }
+            else if(rank==3){
+                   result[mp[i]] ="Bronze Medal";
+            }
+             else{
+                 result[mp[i]]=to_string(rank);
+           }
+           rank++;
+
+  }
+  }
+return result;
+//<...................approch 2 -----------by max heap>
+        // int n=score.size();
+        // priority_queue<pair<int,int>>pq;
+        // vector<string>result(n);
+        // for(int i=0;i<n;i++){
+        //     pq.push({score[i],i}); //now in priority queue the elements with idx is store
+        // }
+        // int rank=1;
+        // for(int i=0;i<n;i++){
+        //     int idx= pq.top().second;
+        //     pq.pop();
+        //     if(rank==1){
+        //         result[idx]="Gold Medal";
+               
+        //     }
+        //     else if(rank==2){
+        //           result[idx]="Silver Medal";
+        //     }
+        //     else if(rank==3){
+        //          result[idx]="Bronze Medal";
+        //     }
+        //     else{
+        //         result[idx]=to_string(rank);
+        //     }
+        //     rank++;
+
+        // }
+        // return result;
+        //<approch 1--------------------------------by using map>
+//         unordered_map<int,int>mp;
+//         int n=score.size();
+//         for(int i=0;i<n;i++){
+//             mp[score[i]]=i;
+
+//         }
+//         sort(begin(score),end(score),greater<int>());
+//         vector<string>result(n);
+//         for(int i=0;i<n;i++){
+//             if(i==0){ //it means it is the highes one
+
+// result[mp[score[i]]]="Gold Medal";                 
+//             }else if(i==1){ //second one
+//             result[mp[score[i]]]="Silver Medal";
+
+//             }else if(i==2){
+//                  result[mp[score[i]]]="Bronze Medal";
+
+//             }else{
+//                 result[mp[score[i]]]=to_string(i+1);
+//             }
+//         }
+//         return result;
+
+        
+    }
+};
