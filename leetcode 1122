@@ -1,0 +1,30 @@
+
+
+
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        //create the map to store the index of each element in the arr2 and if some element in arr1 is not in arr2 then give then infinty value 
+        unordered_map<int,int>mp;
+      for(int i=0;i<arr2.size();i++){
+        mp[arr2[i]]=i;
+      }
+        //now if some element not present then give them value infity 
+        for(auto &num:arr1){
+            if(!mp.count(num)){
+                mp[num]=1e9;
+            }
+        }
+        auto lambda=[&](int &num1,int &num2){
+            if(mp[num1]==mp[num2]){ 
+                //it means they have infinity value so store acc to their increasing order
+                return num1<num2;
+            }
+            return mp[num1]<mp[num2];//store acc to their index 
+
+        };
+        //now sort the element acc to the customized 
+        sort(begin(arr1),end(arr1),lambda);
+        return arr1;
+    }
+};
