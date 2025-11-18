@@ -1,0 +1,38 @@
+class Solution {
+public:
+void fillcount(string &word,int count[26]){
+    for(auto &ch:word){
+        count[ch-'a']++;
+    }//this store the frequency of the word at index 0
+
+}
+    vector<string> commonChars(vector<string>& words) {
+        int n=words.size();
+        //firstly create the count vector so that you store the frequency of the first string given in the words 
+        int count[26]={0};
+        fillcount(words[0],count);
+        //now we have to check that frequency with another next one word at index 1 and so on 
+        for(int i=1;i<n;i++){
+            int temp[26]={0};
+            fillcount(words[i],temp);
+            for(int j=0;j<26;j++){
+                //now store the mininum of both in the count vector 
+                count[j]=min(count[j],temp[j]);
+
+
+            }
+        }
+        vector<string>result;
+        //after this now we got the freq of the min value freq of all the element 
+        for(int i=0;i<26;i++){
+            //we have to convert the freq from integer to alphabet 
+            int c=count[i];
+            while(c--){
+                result.push_back(string(1,i+'a'));
+
+            }
+        }
+        return result;
+        
+    }
+};
