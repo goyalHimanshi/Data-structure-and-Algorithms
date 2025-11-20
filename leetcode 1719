@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int findCenter(vector<vector<int>>& edges) {
+        //<--------------approach 2--------------------->
+    //just  check is one of the edge is common then yes it is center of the node
+
+
+   vector<int>u=edges[0]; //[1,2]
+ vector<int>v=edges[1]; //[2,3]
+if(u[0]==v[0] || u[0]==v[1]){ //1==2 || 1==3
+    return u[0];
+}
+return u[1]; //2
+
+
+
+
+
+
+
+
+
+
+
+
+        //<--------------approach 1------------------------>
+    //   unordered_map<int,int>mp; //firstly create the map to store the frequency of the each edges 
+    //   for(auto &edge:edges){ //[1,2]
+    //     int u=edge[0]; //[1]
+    //     int v=edge[1]; //[2]
+    //     mp[u]++; //to store the freq
+    //     mp[v]++;
+    //   } 
+      //now check of their freq equal to n-1 or not 
+//       for(auto &it:mp){
+//         if(it.second==edges.size()){
+//             return it.first;
+//         }
+//       }
+// return -1;
+
+
+    }
+};
