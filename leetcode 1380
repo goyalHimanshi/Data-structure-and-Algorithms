@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<int> luckyNumbers(vector<vector<int>>& matrix) {
+        int m=matrix.size(); //size of row
+        int n=matrix[0].size(); //size of col 
+       
+        vector<int>minrow; //find the element min in the row
+        for(int i=0;i<m;i++){
+            int rowmin=INT_MAX;
+            for(int j=0;j<n;j++){
+                rowmin=min(rowmin,matrix[i][j]);
+            }
+            minrow.push_back(rowmin);
+        }
+        vector<int>maxcol;  //find the max element in the column
+        for(int j=0;j<n;j++){
+            int colmax=INT_MIN;
+            for(int i=0;i<m;i++){
+                colmax=max(colmax,matrix[i][j]);
+            }
+            maxcol.push_back(colmax);
+        }
+        //check in the matrix
+        vector<int>result;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(matrix[i][j]==minrow[i] && matrix[i][j]==maxcol[j]){
+                    result.push_back(matrix[i][j]);
+                }
+            }
+        }
+ return result;
+
+        
+    }
+};
