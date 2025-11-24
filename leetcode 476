@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int findComplement(int num) {
+        //to find the compliment youhave to convert the num into bits firstly 
+        int numBits=(int)(log2(num))+1; 
+        //now to convert that bits into complement of it 
+        //yo have to xor it with the number of bits 1
+        //101^111=010
+        unsigned int mask=(1U<<numBits)-1;//this will give me the 1111..... 
+        return num^mask;
+        
+    }
+};
