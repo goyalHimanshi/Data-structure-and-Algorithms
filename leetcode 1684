@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        //to check if it consistent or not you have toc hcek all the character 
+        //so create a mask 
+        int mask=0;
+        for(auto &ch:allowed){ //ab 
+        mask|=(1<<(ch-'a')); //this will give me the number of set bit in the string 
+
+
+        }
+        //now we have to only match the set bit in the mask with the words string 
+        int count=0;
+        for(auto &word:words){  //ad
+        bool allcharpresent=true;
+            for(auto &ch:word){ //a
+            if((mask>>(ch-'a')&1)==0){ //the bit of that charater is not set
+            allcharpresent=false;
+            break; 
+
+
+            }
+
+            }
+            if(allcharpresent){ //the bit is set means the charater of give word is present or matches
+                count++;
+            }
+        }
+        return count;
+        
+    }
+};
