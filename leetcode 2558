@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long pickGifts(vector<int>& gifts, int k) {
+        priority_queue<int>pq(begin(gifts),end(gifts));
+        long long sum=0;
+        for(int &gift:gifts){
+            sum+= gift;
+        }
+        long long mysum=0;
+        while(k--){
+            int maxel=pq.top();
+            pq.pop();
+            int remain=sqrt(maxel);
+            mysum+=maxel-remain;
+            pq.push(remain);
+
+        }
+        return sum-mysum;
+        
+    }
+};
