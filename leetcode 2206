@@ -1,0 +1,50 @@
+//approach 4 by using xor opeartion in this we check if the xor of the current and its previous one is 0 if yes then inc the pointer by 2 and repeat till the size of an array 
+sort(nums.begin(),nums.end());
+for(int i=1;i<nums.size();i+=2){
+    if((nums[i]^nums[i-1])!=0){
+        return false;
+    }
+}
+return true;
+
+
+
+
+
+
+//approach 3 using sorting we check if the current element equal to previous one and if yes then inc the pointer by 2 to check its previous one and repeat 
+sort(nums.begin(),nums.end());
+for(int i=1;i<nums.size();i+=2){
+    if(nums[i-1]!=nums[i]){
+        return false;
+    }
+}
+return true;
+
+//approackh 2 using set 
+//in set we store the element if it is not in the set and again if we find the same existing elemenent then we erase from the set and at the end if we find that the set is empty then  we get to know that yes the pair of the given element in an array exists 
+set<int>st;
+for(auto &it:nums){
+    if(st.count(it)){
+        st.erase(it);
+    }else{
+        st.insert(it);
+    }
+}
+return st.empty();
+
+//approach1 using map 
+        unordered_map<int,int>mp;
+        int n=nums.size();
+        we have to store the freq of the array 
+        for(auto &it:nums){
+            mp[it]++;
+        }
+        now check if the element stored in the map has even freq cuz by which they are in pair 
+        for(auto &it:mp){
+            if(it.second %2!=0){
+                return false;
+            }
+
+        }
+        return true;
