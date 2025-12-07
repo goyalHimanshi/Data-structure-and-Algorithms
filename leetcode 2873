@@ -1,0 +1,20 @@
+class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        int n=nums.size();
+       long  long result=0;
+     long long maxdiff=0;
+       long long maxi=0;
+        for(int k=0;k<n;k++){ 
+            //now at last you have to find the max  multiplication of the maxdiff and the element you arecurrently 
+            result=max(result,maxdiff*nums[k]); //0*12=0 //6*6=36 //11*1=11 //11*2=22 //11*7=77
+
+
+            //second step now you have to find the diff 
+            maxdiff=max(maxdiff,maxi-nums[k]); //12-12=0  //12-6=6 //12-1=11 //12-2=10 //12-7=5
+            //1 step you have to firstly find the maxdifference and for that you have to find the max value of i 
+            maxi=max(maxi,(long long)nums[k]);//[12,6,1,2,7]=>12 //12 //12 //12 //12
+        }
+        return result;
+    }
+};
