@@ -1,0 +1,25 @@
+class Solution {
+public:
+
+    int countSymmetricIntegers(int low, int high) {
+        int cnt=0;
+
+        for(int i=low;i<=high;i++){
+            if(i>=10 && i<=99 && i%11==0){
+                //we re talk about 2 dight no. and symmetric number like 11,22,33,44,55,66,77,88,99
+                cnt++;
+            }else if(i>=1000 && i<=9999){
+                //its 4 dight number then the sum of 1st and 2nd dight == sum of 3red and 4th dight 
+              int  first=i/1000;
+              int second=(i/100)%10;
+              int third=(i/10)%10;
+              int fourth=i%10;
+              if(first+second == third+fourth){
+                cnt++;
+              }
+
+            }
+        }
+        return cnt;
+    }
+};
