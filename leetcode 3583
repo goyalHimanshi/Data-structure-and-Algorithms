@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int specialTriplets(vector<int>& nums) {
+        
+      int n=nums.size();
+      const int MOD=1e9+7;
+      //[8,4,2,8,4]
+      //firsty to find the double element on the right and left we have to store the value 
+      unordered_map<int,int>right;
+      for(int i=1;i<n;i++){
+        right[nums[i]]++;
+      }      
+            //4->2,2->1,8->1
+
+            //now we have to store the value of left hand side 
+            unordered_map<int,int>left;
+            left[nums[0]]++; //8->1
+            long long ans=0;
+            for(int i=1;i<n-1;i++){
+                //firstly remove that element from the map 
+                right[nums[i]]-- ; 
+                //we are currently on 4 
+
+                int val=nums[i];
+                int doubleval=2*val; //8
+                int leftmai=left[doubleval]; //8->1 
+                int rightmai=right[doubleval]; //8->1
+                ans+=(long long)leftmai*rightmai;
+               
+               
+
+                left[nums[i]]++;
+            }
+            return ans%MOD;
+
+    }
+};
