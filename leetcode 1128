@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int numEquivDominoPairs(vector<vector<int>>& dominoes) {
+        int n=dominoes.size();
+        map<pair<int,int>,int>mp;
+        for(auto &d:dominoes){
+            if(d[0]>d[1]){
+                swap(d[0],d[1]);
+            }
+            mp[{d[0],d[1]}]++; //we store the pair of elements 
+        }
+        //now we have to find the combinations/pairs of the freq
+        int result=0;
+        for(auto &it:mp){
+            int freq=it.second;
+            result+=freq*(freq-1)/2;
+        }
+        return result;
+        
+    }
+};
