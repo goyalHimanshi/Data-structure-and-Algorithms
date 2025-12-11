@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool threeConsecutiveOdds(vector<int>& arr) {
+        int n=arr.size();
+        int cntodd=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]%2==1){
+                //it means it is odd number 
+                cntodd++;
+            }else{
+            cntodd=0;
+            }
+             if(cntodd==3){
+            return true;
+        }
+        }
+       
+        return false;
+        
+    }
+};
