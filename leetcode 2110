@@ -1,0 +1,19 @@
+class Solution {
+public:
+    long long getDescentPeriods(vector<int>& prices) {
+        long long ans=0;
+        int n=prices.size();
+        int cnt=1;
+        for(int i=1;i<n;i++){
+            if(prices[i-1]-prices[i]==1){
+                cnt++; //3
+            }else{
+                 ans+=(cnt*1LL*(cnt+1))/2; //6
+                 cnt=1;
+            }
+        }
+        ans+=(cnt*1LL*(cnt+1))/2; //3*4=12/2=6  // 6+1*2/2=6+1=7 //formula to find the subaaray continugoes 
+        return ans; //7
+        
+    }
+};
